@@ -19,6 +19,7 @@ app.use('/resources', express.static('public'));
 app.use('/resources', express.static(__dirname + '/public'));
 
 //5.-Establecemos el motor de plantillas
+app.set('view engine', 'ejs');
 
 //6.-Invocamos a brcryptjs
 const brcryptjs = require('bcryptjs');
@@ -39,9 +40,9 @@ app.use(morgan('dev'))
 //9.Importamos el módulo de conexión de la BD
 const connection = require('./database/db');
 
-
+//10.Estableciendo las rutas
 app.get('/', (req,res) => {
-    res.send('Hola mundo');
+    res.render('login');
 })
 
 app.listen(3000, (req,res) => {

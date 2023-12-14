@@ -14,7 +14,7 @@ body{
     align-items: center;
     /* Centra el texto horizontalmente dentro de cada elemento */
     text-align: center;
-    background: url(/img/Wallpaper.jpg) no-repeat center center fixed;
+    background: url(/resources/img/Wallpaper.jpg) no-repeat center center fixed;
 }
 
 .wrapper{
