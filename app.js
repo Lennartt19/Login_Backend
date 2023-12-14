@@ -41,7 +41,8 @@ app.use(morgan('dev'))
 const connection = require('./database/db');
 
 //10.Estableciendo las rutas
-app.get('/', (req,res) => {
+
+app.get('/login', (req,res) => {
     //res.render('index', {msg:'Esto es un mensaje desde Node'});
     res.render('login');
 })
@@ -106,12 +107,15 @@ app.post('/auth', async (req,res) =>{
                     alertMessage: "Usuario y/o contraseña incorrectas", //Mensaje a mostrar
                     alertIcon: "error", //Icono
                     showConfirmButton: true, //Botón de confirmar
-                    timer: 10000, //Tiempo para que se muestre la alerta
-                    ruta: '' //Redireccionamos a la página de login
+                    timer: 15000, //Tiempo para que se muestre la alerta
+                    ruta: 'login' //Redireccionamos a la página de login
                 })
             } else {
                 //res.send('Bienvenido');
-                //res.session.name = results[0].nombre;
+                //Esto nos ayudará a saber si el usuario está logueado
+                req.session.loggedin = true;
+                req.session.name = results[0].nombre;
+                console.log(results[0].nombre);
                 res.render('login',{
                     alert: true, //Confirmamos que todo este ok
                     alertTitle: "Conexion Exitosa", //Titulo de la alerta
@@ -119,7 +123,7 @@ app.post('/auth', async (req,res) =>{
                     alertIcon: "success", //Icono
                     showConfirmButton: false, //Botón de confirmar
                     timer: 1500, //Tiempo para que se muestre la alerta
-                    ruta: 'index' //Redireccionamos a la página principal
+                    ruta: '' //Redireccionamos a la página principal
                 });
             }
         });
@@ -128,9 +132,29 @@ app.post('/auth', async (req,res) =>{
     }
 });
 
-app.get('/index', (req,res) => {
-    res.render('index');
-})
+
+app.get('/', (req,res) => {
+    if(req.session.loggedin){
+        res.render('index', {
+            login: true,
+            name: req.session.name
+            //name: 'Bienvenido'
+        });
+    } else {
+        res.render('index', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+});
+
+//12.-Ruta para cerrar sesión
+
+app.get('/logout', (req,res) => {
+    req.session.destroy(() => {
+        res.redirect('/');
+    });
+});
 
 app.listen(3000, (req,res) => {
     console.log('El Servidor se ha iniciado en http://localhost:3000');

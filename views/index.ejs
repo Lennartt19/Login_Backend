@@ -12,6 +12,12 @@
   <!--cuando usamos <%= %> la plantilla entiende que se envian datos
   desde node
   <h2>El usuario conectado es : <%= %> </h2>-->
-  <h2>Gracias por Node js</h2>
+  <% if (login) { %>
+    <h1>El usuario conectado es : <strong><%= name %></strong></h1>
+    <a href="logout" class="a-logout">Cerrar Sesión</a>
+  <% } else { %>
+    <h1><strong><%= name %></strong></h1>
+    <a href="login" class="a-login">Iniciar Sesión</a>
+  <% } %>
 </body>
 </html>
