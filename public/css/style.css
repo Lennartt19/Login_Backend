@@ -1,0 +1,149 @@
+*{  
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    /* Estilo para un elemento con altura del 100% de la ventana gráfica */
+    height: 100vh;
+    /* Estilo para un contenedor con display: flex; */
+    display: flex;
+    /* Centra los elementos horizontalmente */
+    justify-content: center;
+    /* Centra los elementos verticalmente */
+    align-items: center;
+    /* Centra el texto horizontalmente dentro de cada elemento */
+    text-align: center;
+    background: url(/img/Wallpaper.jpg) no-repeat center center fixed;
+}
+
+.wrapper{
+    background-color: transparent;
+    position: relative;
+    width: 400px;
+    height: 440px;
+    /*Agrega el efecto cristalino*/
+    border: 2px solid rgb(255,255,255,.5);
+    /*Cnfigura el borde*/
+    border-radius: 20px;
+    /*Agrega el efecto opaco*/
+    backdrop-filter: blur(1px);
+    /*Agrega la sobra*/
+    box-shadow: 0 0 30px rgb(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .form-box{
+    /*Indica que todo los latereales al 100%*/
+    width: 100%;
+    /*Expande el vertical*/
+    padding: 40px
+}
+
+.form-box h2{
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: None;
+    transition: .5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:focus ~ label{
+    top:-5px;
+}
+
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 3px 0 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;
+    line-height: 57px;
+}
+
+.remember{
+    font-size: .9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+.remember forgot a{
+    color: #162938;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+}
+
+.login-register{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a{
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover{
+    text-decoration: underline;
+
+}
