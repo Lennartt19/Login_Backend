@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div class="register-form">
+        <h1>Registrase</h1>
+        <form action="register" method="POST">
+            <label for="user">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+        
+            <label for="pass">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <!--Los cuando consultamos en node js, se hace en base a 
+            'name' declarado en formulario-->
+            <label for="nombre">Nombre</label>
+            <input type="text" name="name" id="name" placeholder="Nombre" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Apellido" required>
+
+            <!--Hacer un combobox
+            <label for="rol">Rol</label>
+            <select name="rol" class="select-css">
+                <option value="admin" selected>admin</option>
+                <option value="user">user</option>
+            </select>
+            -->
+            <div style="display: inline;">
+                <a href="/" class="btn-cancel">cancelar</a><input type="submit" class="btn-save" value="save">
+            </div>
+        </form>
+    </div>
+
+    <!--Implementos Sweet Alert 2-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Vamos a recibir los parametros enviados desde node js-->
+
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title:'<%= alertTitle %>',
+                text:'<%= alertMessage %>',
+                icon:'<%= alertIcon %>',
+                showConfirmButton:'<%= showConfirmButton %>',
+                timer:'<%= timer %>'
+            }).then(()=>{
+                window.location = '/ <%= ruta %>';
+            })
+        </script>
+    <% } %>
+</body>
+</html>
